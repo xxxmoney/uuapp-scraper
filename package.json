@@ -1,0 +1,26 @@
+{
+  "name": "puppeteer-scraper",
+  "version": "1.0.0",
+  "description": "A simple web scraper using Puppeteer and TypeScript",
+  "main": "dist/scraper.js",
+  "scripts": {
+    "scrape": "ts-node src/scraper.ts",
+    "build": "tsc",
+    "build-start": "node dist/scraper.js"
+  },
+  "keywords": [
+    "puppeteer",
+    "scraper",
+    "typescript",
+    "web scraping"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^22.14.0",
+    "@types/puppeteer": "^5.4.7",
+    "puppeteer": "^24.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

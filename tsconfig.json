@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    /* Base Options: */
+    "esModuleInterop": true, // Enables compatibility with CommonJS modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "target": "ES2016", // Target modern JavaScript version
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "resolveJsonModule": true, // Allow importing JSON files
+    "moduleDetection": "force", // Treat files as modules
+    "isolatedModules": true, // Ensure modules can be transpiled independently
+
+    /* Strictness */
+    "strict": true, // Enable all strict type-checking options
+    "noUncheckedIndexedAccess": true, // Add 'undefined' to index signatures
+    "checkJs": true, // Type-check JavaScript files
+
+    /* If NOT transpiling with TypeScript: */
+    "module": "CommonJS", // Specify module code generation
+    "outDir": "./dist", // Redirect output structure to the directory
+    "rootDir": "./src", // Specify the root directory of input files
+
+    /* If you're building for Node.js: */
+    "lib": ["es2022"], // Include necessary library files
+    "sourceMap": true // Generate corresponding '.map' file
+  },
+  "include": ["src/**/*"], // Files to include in compilation
+  "exclude": ["node_modules", "dist"] // Files/directories to exclude
+}
