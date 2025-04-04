@@ -1,12 +1,13 @@
 {
   "name": "puppeteer-scraper",
   "version": "1.0.0",
-  "description": "A simple web scraper using Puppeteer and TypeScript",
-  "main": "dist/scraper.js",
+  "description": "A simple uuApp scraper using Puppeteer and TypeScript",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "scrape": "ts-node src/scraper.ts",
+    "start": "ts-node --esm src/index.ts",
     "build": "tsc",
-    "build-start": "node dist/scraper.js"
+    "build-start": "node dist/index.js"
   },
   "keywords": [
     "puppeteer",
