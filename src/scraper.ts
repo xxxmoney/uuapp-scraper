@@ -21,13 +21,34 @@ export class Scraper {
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
-                '--disable-accelerated-2d-canvas', // Disable GPU acceleration
+                '--disable-accelerated-2d-canvas',
                 '--no-first-run',
                 '--no-zygote',
-                '--disable-gpu'
+                '--disable-gpu',
+                `--user-agent=${USER_AGENT}`
             ]
         });
         console.log(`Browser initialized`);
+
+        await this.authenticate();
+    }
+
+    private async authenticate() {
+        if (!this.browser) {
+            throw new Error(`Browser is not initialized: call init() before scraping`);
+        }
+
+        let page: Page | null = null;
+        try {
+            // TODO: authenticate (take params from parameters or .env, etc)
+
+            page = await this.browser.newPage();
+        }
+        finally {
+            if (page) {
+                await page.close();
+            }
+        }
     }
 
     /**
@@ -47,7 +68,6 @@ export class Scraper {
         let page: Page | null = null;
         try {
             page = await this.browser.newPage();
-            await page.setUserAgent(USER_AGENT);
 
             // Wait and handle SPAs: 'waitUntil: 'networkidle0'' waits until there are no more than 0 network connections for at least 500 ms
             console.log(`Navigating to ${url}...`);
