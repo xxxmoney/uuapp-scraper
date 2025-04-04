@@ -1,7 +1,7 @@
 import {Scraper} from "./scraper.ts";
 
-const scraper = new Scraper();
+await using scraper = await Scraper.build();
 
-//await scraper.getHtml('https://www.seznam.cz')
+const result = await scraper.getHtml('https://www.seznam.cz')
 
-console.log('Test')
+console.log(result);

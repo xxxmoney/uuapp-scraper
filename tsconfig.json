@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "skipLibCheck": true,
-    "target": "ES2020",
+    "target": "ES2022",
     "allowJs": true,
     "resolveJsonModule": true,
-    "moduleDetection": "force",
+    "moduleDetection": "auto",
     "isolatedModules": true,
 
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "checkJs": true,
     "allowImportingTsExtensions": true,
+    "noEmit": true,
 
     "module": "ES2022",
     "outDir": "./dist",
@@ -20,6 +21,6 @@
     "lib": ["es2022"],
     "sourceMap": true
   },
-  "include": ["src/**/*"], // Files to include in compilation
-  "exclude": ["node_modules", "dist"] // Files/directories to exclude
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
