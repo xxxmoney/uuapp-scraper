@@ -20,7 +20,7 @@
    ```
  - Create .env file with:
     ```bash
-    AUTH_TYPE=basic|code
+    IS_DEBUG=false
     USERNAME=your_username
     PASSWORD=your_password
     URL=https://example.com
