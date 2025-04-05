@@ -30,4 +30,4 @@ export const AUTH_FORM_PASSWORD_SELECTOR = '.uu5-forms-text-input input[name="pa
 export const AUTH_FORM_SUBMIT_BUTTON_SELECTOR = '.button[type="submit"]';
 
 // Where to write all the contents
-export const OUTPUT_FILE = 'output.txt';
+export const OUTPUT_FILE_PATH = 'output\\output.txt';

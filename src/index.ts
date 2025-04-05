@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import { config }  from 'dotenv';
-import {OUTPUT_FILE} from "./constants.js";
+import {OUTPUT_FILE_PATH} from "./constants.js";
 import {Processor} from "./processor.js";
 import {EnvSchema} from "./schemas.js";
 
@@ -17,8 +17,8 @@ const parsedEnvConfig = EnvSchema.parse(envConfig.parsed);
 
 console.log(`Parsed configuration: ${JSON.stringify(parsedEnvConfig)}`);
 
-// const processor = new Processor(parsedEnvConfig);
-// const contents = await processor.process();
-//
-// // Save the contents to a file
-// await fs.writeFile(OUTPUT_FILE, contents.join('\n\n'), 'utf-8');
+const processor = new Processor(parsedEnvConfig);
+const contents = await processor.process();
+
+// Save the contents to a file
+await fs.writeFile(OUTPUT_FILE_PATH, contents.join('\n\n'), 'utf-8');
