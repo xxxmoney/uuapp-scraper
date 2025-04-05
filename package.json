@@ -21,8 +21,10 @@
     "@types/node": "^22.14.0",
     "@types/puppeteer": "^5.4.7",
     "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
     "puppeteer": "^24.6.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "zod": "^3.24.2"
   }
 }

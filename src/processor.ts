@@ -1,21 +1,28 @@
 import {Scraper} from "./scraper.ts";
 import {HtmlProcessor} from "./htmlProcessor.js";
+import {Env} from "./types.ts";
 
-export const Processor = {
-    async process(contentsPageUrl: string): Promise<string[]> {
+export class Processor {
+    private readonly env: Env;
+
+    constructor(env: Env) {
+        this.env = env;
+    }
+
+    async process(): Promise<string[]> {
         // Prepare scraper
-        await using scraper = await Scraper.build();
+        await using scraper = await Scraper.build(this.env);
 
         // Get html with links
-        const contentsPageHtml = await scraper.getHtml(contentsPageUrl);
+        const contentsPageHtml = await scraper.getHtml(this.env.URL);
         if (!contentsPageHtml) {
-            throw new Error(`Failed to get html from ${contentsPageUrl}`);
+            throw new Error(`Failed to get html from ${this.env.URL}`);
         }
 
         // Extract links
         const links = HtmlProcessor.extractLinks(contentsPageHtml);
         if (links.length === 0) {
-            throw new Error(`Failed to extract links from ${contentsPageUrl}`);
+            throw new Error(`Failed to extract links from ${this.env.URL}`);
         }
 
         // Log links
@@ -43,4 +50,4 @@ export const Processor = {
 
         return pageContents;
     }
-};
+}

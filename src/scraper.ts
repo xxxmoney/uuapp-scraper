@@ -1,14 +1,17 @@
 import { Browser, Page, launch } from 'puppeteer';
-import {USER_AGENT} from "./constants.ts";
+import {IS_DEBUG, USER_AGENT} from "./constants.ts";
+import {Env} from "./types.ts";
 
 export class Scraper {
+    private readonly env: Env;
     private browser: Browser | null = null;
 
-    private constructor() {
+    private constructor(env: Env) {
+        this.env = env;
     }
 
-    public static async build(): Promise<Scraper> {
-        const scraper = new Scraper();
+    public static async build(env: Env): Promise<Scraper> {
+        const scraper = new Scraper(env);
         await scraper.initialize();
         return scraper;
     }
@@ -16,7 +19,7 @@ export class Scraper {
     private async initialize() {
         console.log(`Initializing browser...`);
         this.browser = await launch({
-            headless: true,
+            headless: !IS_DEBUG,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
