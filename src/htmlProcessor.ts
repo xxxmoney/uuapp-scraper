@@ -7,7 +7,7 @@ export const HtmlProcessor = {
         const links: string[] = [];
 
         // Extract all anchor tags within the navigation container
-        $(LINK_SELECTOR).find('a').each((_, element) => {
+        $(LINK_SELECTOR).each((_, element) => {
             const href = $(element).attr('href');
             if (href) {
                 links.push(href);

@@ -14,7 +14,7 @@ export const AUTHENTICATION_URL = 'https://uuidentity.plus4u.net/';
 export const CONTAINER_SELECTOR = '.uu5-bricks-page-content-body';
 
 // Selector for links for all sub pages
-export const LINK_SELECTOR = '.uu-bookkit-go-to-page-link';
+export const LINK_SELECTOR = 'a.uu-bookkit-go-to-page-link';
 
 // Selector for login button
 export const LOGIN_BUTTON_SELECTOR = '.plus4u5-app-button';
