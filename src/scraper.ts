@@ -3,7 +3,7 @@ import {
     AUTH_FORM_CONTAINER_SELECTOR,
     AUTH_FORM_PASSWORD_SELECTOR,
     AUTH_FORM_SUBMIT_BUTTON_SELECTOR,
-    AUTH_FORM_USERNAME_SELECTOR,
+    AUTH_FORM_USERNAME_SELECTOR, AUTHENTICATION_URL,
     LOGIN_BUTTON_SELECTOR,
     MAIN_URL,
     USER_AGENT,
@@ -55,6 +55,8 @@ export class Scraper {
         let page: Page | null = null;
         let loginPage: Page | null = null;
         try {
+            // No need to check authentication first - the browser does not remember authentication
+
             page = await this.browser.newPage();
 
             // Go to main page
@@ -74,10 +76,10 @@ export class Scraper {
 
             // Wait for new login page to open
             const loginPageTarget = await this.browser.waitForTarget(
-                target => target.type() === 'page'
+                target =>  target.type() === 'page' && target.url().startsWith(AUTHENTICATION_URL)
             );
             if (!loginPageTarget) {
-                throw new Error('Could ont find the login page taget');
+                throw new Error('Could not find the login page taget');
             }
             console.log(`Login page target found`);
 
@@ -93,8 +95,10 @@ export class Scraper {
                 loginPage.bringToFront(),
                 loginPage.waitForNavigation({ waitUntil: WAIT_UNTIL_NETWORK_IDLE })
             ]);
+            console.log(`Login page loaded`);
 
             // Get the container and inputs
+            console.log(`Getting login form elements...`);
             const loginContainer = await loginPage.$(AUTH_FORM_CONTAINER_SELECTOR);
             if (!loginContainer) {
                 throw new Error('Login container not found');
@@ -111,6 +115,7 @@ export class Scraper {
             if (!submitButton) {
                 throw new Error('Submit button not found');
             }
+            console.log(`Login form elements found`);
 
             // Fill in the login form
             console.log(`Filling in the login form...`);
@@ -128,14 +133,32 @@ export class Scraper {
 
             // Success
             console.log(`Authenticated`);
+
+            // Wait to apply the authentication to browser
+            console.log(`Waiting for authentication to apply...`);
+            await page.waitForNavigation({ waitUntil: WAIT_UNTIL_NETWORK_IDLE })
+            //await new Promise(resolve => setTimeout(resolve, 10000));
+            console.log(`Authentication applied, presumably`);
         }
         finally {
             if (page) {
-                await page.close();
+                try {
+                    await page.close();
+                }
+                catch (error) {
+                    console.warn(`Failed to clode page:`, error);
+                }
             }
             if (loginPage) {
-                await loginPage.close();
+                try {
+                    await loginPage.close();
+                }
+                catch (error) {
+                    console.warn(`Failed to close login page:`, error);
+                }
             }
+
+            console.log(`Authentication process cleanup finished`);
         }
     }
 

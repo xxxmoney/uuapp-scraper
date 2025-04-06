@@ -8,6 +8,8 @@ export const WAIT_UNTIL_NETWORK_IDLE = 'networkidle0';
 // Main url - used for authentication
 export const MAIN_URL = 'https://www.plus4u.net';``
 
+export const AUTHENTICATION_URL = 'https://uuidentity.plus4u.net/';
+
 // Container selector for getting content of each sub page
 export const CONTAINER_SELECTOR = '.uu5-bricks-page-content-body';
 
@@ -27,7 +29,7 @@ export const AUTH_FORM_USERNAME_SELECTOR = '.uu5-forms-text-input input[name="us
 export const AUTH_FORM_PASSWORD_SELECTOR = '.uu5-forms-text-input input[name="password"]';
 
 // Selector for submit button in the form
-export const AUTH_FORM_SUBMIT_BUTTON_SELECTOR = '.button[type="submit"]';
+export const AUTH_FORM_SUBMIT_BUTTON_SELECTOR = 'button.color-schema-green';
 
 // Where to write all the contents
 export const OUTPUT_FILE_PATH = 'output\\output.txt';
