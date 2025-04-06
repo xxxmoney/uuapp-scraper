@@ -39,6 +39,9 @@ export class Processor {
                 throw new Error(`Failed to get html from ${link}`);
             }
 
+            // TODO: probably get content using pupeteer, not cheerio
+            // Also: https://github.com/puppeteer/puppeteer/issues/545#issuecomment-1536915114
+
             // Extract content
             const content = HtmlProcessor.extractContent(html);
             if (!content) {
