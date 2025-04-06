@@ -25,7 +25,7 @@ export const HtmlProcessor = {
 
         // TODO: fix to extract only text content
         // Extract all text from the container
-        return $.text();
+        return container.text();
     }
 
 };
