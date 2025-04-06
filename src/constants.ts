@@ -11,7 +11,7 @@ export const MAIN_URL = 'https://www.plus4u.net';``
 export const AUTHENTICATION_URL = 'https://uuidentity.plus4u.net/';
 
 // Container selector for getting content of each sub page
-export const CONTAINER_SELECTOR = '.plus4u5-app-page-content-wrapper';
+export const CONTAINER_SELECTOR = 'body';
 
 // Selector for links for all sub pages
 export const LINK_SELECTOR = 'a.uu-bookkit-go-to-page-link';

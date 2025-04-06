@@ -33,7 +33,7 @@ export class Processor {
 
         // Get html for each link
         const pageContents = [];
-        for (const link of links) {
+        for (const link of links.slice(0, 3)) {
             const html = await scraper.getHtml(link);
             if (!html) {
                 throw new Error(`Failed to get html from ${link}`);

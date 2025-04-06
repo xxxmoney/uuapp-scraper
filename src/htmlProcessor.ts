@@ -19,10 +19,13 @@ export const HtmlProcessor = {
 
     extractContent(pageHtml: string): string {
         const $ = cheerio.load(pageHtml);
+
+        // TODO: fix container selector
         const container = $(CONTAINER_SELECTOR);
 
+        // TODO: fix to extract only text content
         // Extract all text from the container
-        return container.text();
+        return $.text();
     }
 
 };
