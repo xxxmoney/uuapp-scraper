@@ -131,14 +131,12 @@ export class Scraper {
             ]);
             console.log(`Login form submitted`);
 
-            // Success
-            console.log(`Authenticated`);
-
             // Wait to apply the authentication to browser
             console.log(`Waiting for authentication to apply...`);
-            await page.waitForNavigation({ waitUntil: WAIT_UNTIL_NETWORK_IDLE })
-            //await new Promise(resolve => setTimeout(resolve, 10000));
-            console.log(`Authentication applied, presumably`);
+            await page.waitForNavigation({ waitUntil: WAIT_UNTIL_NETWORK_IDLE });
+
+            // Success
+            console.log(`Authenticated`);
         }
         finally {
             if (page) {
