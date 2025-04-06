@@ -143,16 +143,16 @@ export class Scraper {
                 try {
                     await page.close();
                 }
-                catch (error) {
-                    console.warn(`Failed to clode page:`, error);
+                catch {
+                    // Empty
                 }
             }
             if (loginPage) {
                 try {
                     await loginPage.close();
                 }
-                catch (error) {
-                    console.warn(`Failed to close login page:`, error);
+                catch {
+                    // Empty
                 }
             }
 
