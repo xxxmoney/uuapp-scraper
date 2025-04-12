@@ -1,8 +1,8 @@
 import { promises as fs } from 'node:fs';
 import { config }  from 'dotenv';
-import {OUTPUT_FILE_PATH} from "./constants.js";
-import {Processor} from "./processor.js";
-import {EnvSchema} from "./schemas.js";
+import {OUTPUT_FILE_PATH} from "./src/constants.js";
+import {Processor} from "./src/processor.js";
+import {EnvSchema} from "./src/schemas.js";
 
 // Load configuration from .env
 const envConfig = config();
