@@ -34,4 +34,4 @@ export const AUTH_FORM_SUBMIT_BUTTON_SELECTOR = 'button.color-schema-green';
 // Where to write all the contents
 export const OUTPUT_FILE_PATH = 'output\\output.txt';
 
-export const LINKS_CHUNK_SIZE = 5;
+export const LINKS_CHUNK_SIZE = 15;
