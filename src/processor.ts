@@ -37,6 +37,7 @@ export class Processor {
         const pageContents = [];
         const linksChunked = _.chunk(links, LINKS_CHUNK_SIZE);
 
+        // Process links in chunks
         for (const chunk of linksChunked) {
             const chunkContents = await Promise.all(chunk.map(async link => {
                 try {
