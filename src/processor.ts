@@ -62,7 +62,7 @@ export class Processor {
         // Extract content
         const content = HtmlProcessor.extractContent(html);
         if (!content) {
-            throw new Error(`Failed to extract content from ${link}, html: \n ${html}`);
+            throw new Error(`Failed to extract content from ${link}`);
         }
 
         return content;
