@@ -18,7 +18,14 @@
    ```bash
    npm install
    ```
- - Run the scraper (TODO: specify parameter options)
+ - Create .env file with:
+    ```bash
+    IS_DEBUG=false
+    USERNAME=your_username
+    PASSWORD=your_password
+    URL=https://example.com
+    ```
+ - Run the scraper
    ```bash
    npm run start
    ```

@@ -42,3 +42,6 @@ yarn.lock
 
 # ignore package-lock.json
 package-lock.json
+
+# output files
+output

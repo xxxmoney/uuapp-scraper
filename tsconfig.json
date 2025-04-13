@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "esModuleInterop": false,
-    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "skipDefaultLibCheck": false,
     "target": "ES2022",
     "allowJs": true,
     "resolveJsonModule": true,
     "moduleDetection": "auto",
+    "moduleResolution": "bundler", // Fix for zod - https://github.com/colinhacks/zod/issues/3739
     "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
 
     "strict": true,
     "noUncheckedIndexedAccess": true,
