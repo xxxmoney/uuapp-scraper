@@ -17,7 +17,7 @@ const parsedEnvConfig = EnvSchema.parse(envConfig.parsed);
 
 console.log(`Parsed configuration: ${JSON.stringify(parsedEnvConfig)}`);
 
-const processor = new Processor(parsedEnvConfig);
+await using processor = await Processor.build(parsedEnvConfig);
 const contents = await processor.process();
 
 // Save the contents to a file
