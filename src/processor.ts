@@ -13,7 +13,9 @@ export class Processor {
     }
 
     public static async build(env: Env): Promise<Processor> {
-        return new Processor(env);
+        const processor = new Processor(env);
+        await processor.initialize();
+        return processor;
     }
 
     private async initialize() {
