@@ -47,7 +47,7 @@ export class Scraper {
 
     private async authenticate() {
         if (!this.browser) {
-            throw new Error(`Browser is not initialized: call init() before scraping`);
+            throw new Error(`Browser is not initialized: firstly call initialize()`);
         }
 
         console.log(`Authenticating...`);
