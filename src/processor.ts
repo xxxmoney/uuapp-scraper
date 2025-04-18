@@ -53,7 +53,7 @@ export class Processor {
         for (const chunk of linksChunked) {
             const chunkContents = await Promise.all(chunk.map(async link => {
                 try {
-                    return await this.processLink(link);
+                    return await this.processUrl(link);
                 } catch (error) {
                     console.error(error);
                     return null;
@@ -65,7 +65,7 @@ export class Processor {
         return pageContents;
     }
 
-    public async processLink(link: string): Promise<string> {
+    public async processUrl(link: string): Promise<string> {
         if (!this.scraper) {
             throw new Error(`Scraper is not initialized: firstly call initialize()`);
         }
