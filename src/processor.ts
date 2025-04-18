@@ -49,17 +49,28 @@ export class Processor {
         const pageContents = [];
         const linksChunked = _.chunk(links, LINKS_CHUNK_SIZE);
 
+        // TODO: fix, seems to now work now
         // Process links in chunks
-        for (const chunk of linksChunked) {
-            const chunkContents = await Promise.all(chunk.map(async link => {
-                try {
-                    return await this.processUrl(link);
-                } catch (error) {
-                    console.error(error);
-                    return null;
-                }
-            }));
-            pageContents.push(...chunkContents.filter(content => content !== null));
+        // for (const chunk of linksChunked) {
+        //     const chunkContents = await Promise.all(chunk.map(async link => {
+        //         try {
+        //             return await this.processUrl(link);
+        //         } catch (error) {
+        //             console.error(error);
+        //             return null;
+        //         }
+        //     }));
+        //     pageContents.push(...chunkContents.filter(content => content !== null));
+        // }
+
+        // Process links sequentially
+        for (const link of links) {
+            try {
+                const content = await this.processUrl(link);
+                pageContents.push(content);
+            } catch (error) {
+                console.error(error);
+            }
         }
 
         return pageContents;
